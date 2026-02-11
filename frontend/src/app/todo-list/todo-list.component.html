@@ -1,0 +1,16 @@
+<div class="container">
+  <h2>To-Do List</h2>
+  <div class="input-group mb-3">
+    <input type="text" [(ngModel)]="newTodoTitle" placeholder="Add new task" class="form-control">
+    <button (click)="addTodo()" class="btn btn-primary">Add</button>
+  </div>
+  <ul class="list-group">
+    <li *ngFor="let todo of todos" class="list-group-item d-flex justify-content-between align-items-center">
+      <span [class.completed]="todo.isCompleted">{{ todo.title }}</span>
+      <div>
+        <input type="checkbox" [(ngModel)]="todo.isCompleted" (change)="updateTodo(todo)" class="form-check-input me-2">
+        <button (click)="deleteTodo(todo.id)" class="btn btn-danger btn-sm">Delete</button>
+      </div>
+    </li>
+  </ul>
+</div>
