@@ -1,9 +1,6 @@
 {
-  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1,
-  "newProjectRoot": "projects",
   "projects": {
-    "frontend": {
+    "to-do": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,10 +10,10 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/frontend",
+            "outputPath": "dist/to-do",
             "index": "frontend/src/index.html",
             "main": "frontend/src/main.ts",
-            "polyfills": ["frontend/src/polyfills.ts"],
+            "polyfills": "frontend/src/polyfills.ts",
             "tsConfig": "frontend/tsconfig.app.json",
             "assets": [
               "frontend/src/favicon.ico",
@@ -31,7 +28,7 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "frontend:build"
+            "browserTarget": "to-do:build"
           }
         }
       }
