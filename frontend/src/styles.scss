@@ -1,10 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 
+/* Import Bootstrap CSS */
+@import "~bootstrap/dist/css/bootstrap.min.css";
+
+/* Custom styles */
 body {
   padding: 20px;
-}
-
-.completed {
-  text-decoration: line-through;
-  color: #888;
 }
