@@ -1,28 +1,33 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TodoService {
-  private apiUrl = 'http://localhost:5000/api/todo';
+  private todos: Todo[] = [];
+  private todosSubject = new BehaviorSubject<Todo[]>(this.todos);
+  todos$ = this.todosSubject.asObservable();
 
-  constructor(private http: HttpClient) { }
+  constructor() { }
 
-  getTodos(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrl);
+  getTodos(): Observable<Todo[]> {
+    return this.todos$;
   }
 
-  addTodo(todo: any): Observable<any> {
-    return this.http.post(this.apiUrl, todo);
+  addTodo(todo: Todo): void {
+    this.todos.push(todo);
+    this.todosSubject.next(this.todos);
   }
 
-  updateTodo(id: number, todo: any): Observable<any> {
-    return this.http.put(`${this.apiUrl}/${id}`, todo);
+  deleteTodo(id: number): void {
+    this.todos = this.todos.filter(todo => todo.id !== id);
+    this.todosSubject.next(this.todos);
   }
+}
 
-  deleteTodo(id: number): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/${id}`);
-  }
+interface Todo {
+  id: number;
+  title: string;
+  completed: boolean;
 }
