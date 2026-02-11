@@ -3,32 +3,18 @@
  * You can add your own extra polyfills to this file.
  * 
  * This file is divided into 2 sections:
- *   1. Browser polyfills (run by browsers)
- *   2. Application imports (optional higher level fixes for specific browser bugs)
+ *   1. Browser polyfills (ie shim for older browsers)
+ *   2. Application imports (ie Angular specific helpers)
  */
 
-/**************************************************************************************************
- * BROWSER POLYFILLS
- */
-
+// 1. Browser polyfills
 /**
- * By default, zone.js will patch all possible global variables.
- * For applications that are not using Angular or weaving zone.js with WebComponents then
- * it is safe to exclude zone.js from patching unnecessary globals.
+ * By default, zone.js will patch all possible macroTask and DomEvents
+ * user can disable parts of macroTask/DomEvents patch by setting following flags to false,
+ * for example if user does not need animation patches:
+ * (window as any).__Zone_disable_requestAnimationFrame = true;
  * 
- * Recommended for:
- * - Angular applications that do not use Component Fausts or the HMR/hot loader.
- * - Applications not using Angular and not using Web Components.
+ * for more detail, please see: https://github.com/angular/angular/blob/master/packages/zone.js/README.md#disable-patch
  */
-// (window as any).__Zone_disable_requestAnimationFrame = true; // Disable patch requestAnimationFrame
-// (window as any).__Zone_disable_on_property = true; // Disable patch onProperty such as onclick
-// (window as any).__zone_symbol__UNPATCHED_EVENTS = ['scroll', 'mousemove']; // disable patch specified eventNames
 
-/**************************************************************************************************
- * Zone JS is required by default for Angular itself.
- */
-import 'zone.js';
-
-/**************************************************************************************************
- * APPLICATION IMPORTS
- */
+// 2. Application imports
